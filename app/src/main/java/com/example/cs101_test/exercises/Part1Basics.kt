@@ -51,16 +51,21 @@ object Part1Basics {
 
     // ---------------------- EXERCISE 8
     // Create a function to find the maximum value in a list.
-    fun findMax(numbers: List<Int>): Int {
+    fun findMax(numbers: List<Int>): Int? {
         // Your code here
-        val max: Int = numbers.maxOrNull() ?: 0
-        return max
+        require(numbers.isNotEmpty()) { "List cannot be empty!" }
+
+        return numbers.maxOrNull()!!
     }
 
     // ---------------------- EXERCISE 9
     // Create a function to get the value for a given key from a map.
     fun getValue(map: Map<String, Int>, key: String): Int? {
         // Your code here
+        map.forEach {
+            if (key == it.key) return it.value
+        }
+
         return null
     }
 
@@ -68,28 +73,35 @@ object Part1Basics {
     // Create a function that calculates the area of a rectangle given its length and width.
     fun calculateArea(length: Double, width: Double): Double {
         // Your code here
-        return 0.0
+        return length * width
     }
 
     // ---------------------- EXERCISE 11
     // Create a function that checks if a number is positive and returns a boolean. 0 is not positive.
     fun isPositive(number: Int): Boolean {
         // Your code here
-        return false
+        return number > 0
     }
 
     // ---------------------- EXERCISE 12
     // Create a function to calculate the average of an array of doubles.
     fun calculateAverage(numbers: Array<Double>): Double {
         // Your code here
-        return 0.0
+        return numbers.sum() / numbers.size
     }
 
     // ---------------------- EXERCISE 13
     // Create a function that filters out negative numbers from a list.
     fun filterNegativeNumbers(numbers: List<Int>): List<Int> {
         // Your code here
-        return listOf()
+        val positiveNumbers: MutableList<Int> = mutableListOf()
+
+        numbers.forEach {
+            if (it > 0) {
+                positiveNumbers.add(it)
+            }
+        }
+        return positiveNumbers
     }
 
     // ---------------------- EXERCISE 14
@@ -100,6 +112,17 @@ object Part1Basics {
     //      Expected Output: {h=1, e=1, l=3, o=2, w=1, r=1, d=1}
     fun charFrequency(str: String): Map<Char, Int> {
         // Your code here
-        return mapOf()
+        val frequencyMap = mutableMapOf<Char, Int>()
+
+        str.forEach { char: Char ->
+            if (char.isLetter()) {
+                val current = frequencyMap[char] ?: 0
+                frequencyMap[char] = current + 1
+            }
+
+
+        }
+
+        return frequencyMap
     }
 }
