@@ -32,15 +32,15 @@ fun main() {
 
     // ---------------------- EXERCISE 5
     println("Exercise 5: Write a function to check if a number is even or odd and return true if even and false if odd.")
-    // println(Part1Basics.isEven(2))
-    // println("Expected output: true")
-    // println(Part1Basics.isEven(3))
-    // println("Expected output: false")
+    println(Part1Basics.isEven(2))
+    println("Expected output: true")
+    println(Part1Basics.isEven(3))
+    println("Expected output: false")
 
     // ---------------------- EXERCISE 6
     println("Exercise 6: Create a function to find the second largest number in a list.")
-    // println(Part1Basics.secondLargest(listOf(1, 2, 3, 4, 5)))
-    // println("Expected output: 4")
+    println(Part1Basics.secondLargest(listOf(1, 2, 3, 4, 5)))
+    println("Expected output: 4")
 
     // ---------------------- EXERCISE 7
     println("Exercise 7: Create a function that takes a name as a parameter and returns 'Hello, <name>!'.")

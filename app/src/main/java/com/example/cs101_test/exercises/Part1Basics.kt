@@ -3,49 +3,58 @@ package com.example.cs101_test.exercises
 object Part1Basics {
     // ---------------------- EXERCISE 1
     // Declare a mutable variable called 'temperature' of type Int and assign it a value of 25.
+    var temperature: Int = 25
 
     // ---------------------- EXERCISE 2
     // Declare an immutable variable called 'greeting' of type String and assign it a value of "Hello, Kotlin!".
+
+    val greeting: String = "Hello, Kotlin!"
 
     // ---------------------- EXERCISE 3
     // Print on separate lines the variables from exercise 1 and 2.
     fun printVariables() {
         // Your code here
+        println(temperature)
+        println(greeting)
     }
 
     // ---------------------- EXERCISE 4
     // Complete the function to convert a string to uppercase and return it.
     fun convertToUpperCase(input: String): String {
         // Your code here
-        return ""
+        return input.uppercase()
     }
 
     // ---------------------- EXERCISE 5
     // Write a function to check if a number is even or odd and return true if even and false if odd.
     fun isEven(number: Int): Boolean {
         // Your code here
-        return false
+        return number % 2 == 0
     }
 
     // ---------------------- EXERCISE 6
     // Create a function to find the second largest number in a list.
     fun secondLargest(list: List<Int>): Int {
         // Your code here
-        return 0
+        val sorted: List<Int> = list.sorted()
+        return sorted[sorted.size-2]
     }
+
+
 
     // ---------------------- EXERCISE 7
     // Create a function that takes a name as a parameter and returns "Hello, <name>!".
     fun greetUser(name: String): String {
         // Your code here
-        return ""
+        return "Hello, $name!"
     }
 
     // ---------------------- EXERCISE 8
     // Create a function to find the maximum value in a list.
     fun findMax(numbers: List<Int>): Int {
         // Your code here
-        return 0
+        val max: Int = numbers.maxOrNull() ?: 0
+        return max
     }
 
     // ---------------------- EXERCISE 9
