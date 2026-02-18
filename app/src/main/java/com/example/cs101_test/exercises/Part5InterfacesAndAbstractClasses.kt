@@ -39,7 +39,9 @@ object Part5InterfacesAndAbstractClasses {
         rating: Double,
         val seasons: Int
     ) : MediaContent(title, releaseYear, genre, rating) {
-
+        override fun playContent() {
+            println("Playing $title...")
+        }
     }
 
     class Documentary(
@@ -70,10 +72,79 @@ object Part5InterfacesAndAbstractClasses {
     interface Account {
         val accountNumber: String
         val accountHolder: String
-        val balance: Double
+        var balance: Double
 
-        fun deposit(amount: Double) {
+        fun deposit(amount: Double)
+        fun withdraw(amount: Double)
+        fun checkBalance(): Double
+    }
 
+    class SavingsAccount(
+        override val accountNumber: String,
+        override val accountHolder: String,
+        override var balance: Double,
+        val interestRate: Double
+    ) : Account {
+        override fun deposit(amount: Double) {
+            balance += amount
+        }
+
+        override fun withdraw(amount: Double) {
+            if (amount > balance) {
+                println("Insufficient funds")
+            } else if (amount < balance) {
+                balance -= amount
+            }
+        }
+
+        override fun checkBalance(): Double {
+            return balance
+        }
+    }
+
+    class CurrentAccount(
+        override val accountNumber: String,
+        override val accountHolder: String,
+        override var balance: Double,
+        val overdraftLimit: Double
+    ) : Account {
+        override fun deposit(amount: Double) {
+            balance += amount
+        }
+
+        override fun withdraw(amount: Double) {
+            if (amount > balance + overdraftLimit) {
+                println("Insufficient funds")
+            } else if (amount < balance + overdraftLimit) {
+                balance -= amount
+            }
+        }
+
+        override fun checkBalance(): Double {
+            return balance
+        }
+    }
+
+    class BusinessAccount(
+        override val accountNumber: String,
+        override val accountHolder: String,
+        override var balance: Double,
+        val businessName: String
+    ) : Account {
+        override fun deposit(amount: Double) {
+            balance += amount
+        }
+
+        override fun withdraw(amount: Double) {
+            if (amount > balance) {
+                println("Insufficient funds")
+            } else if (amount < balance) {
+                balance -= amount
+            }
+        }
+
+        override fun checkBalance(): Double {
+            return balance
         }
     }
 
