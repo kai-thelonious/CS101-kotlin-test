@@ -40,6 +40,45 @@ object Part4InheritanceAndAccessModification {
     // E.g. an Employee.work() should print one thing and Developer.work() another
     // The work() method must print something and not be blank, but you can choose what you want it to print!
 
+    open class Employee(
+        val name: String,
+        val position: String,
+        val salary: Double
+    ) {
+        open fun work() {
+            println("$name is working")
+        }
+    }
+
+    class Manager(
+        name: String,
+        salary: Double,
+        val department: String
+    ) : Employee(name, "Manager", salary) {
+        override fun work() {
+            println("$name is managing the $department department")
+        }
+    }
+
+    class Developer(
+        name: String,
+        salary: Double,
+        val programmingLanguage: String
+    ) : Employee(name, "Developer", salary) {
+        override fun work() {
+            println("$name is developing in $programmingLanguage")
+        }
+    }
+
+    class Intern(
+        name: String,
+        salary: Double,
+        val school: String
+    ) : Employee(name, "Intern", salary) {
+        override fun work() {
+            println("$name is learning at $school")
+        }
+    }
 
     // ---------------------- EXERCISE 3
     // Create a class named Course to represent course information
@@ -59,6 +98,19 @@ object Part4InheritanceAndAccessModification {
     //         }
     // }
 
+    class Course(val courseName: String, val instructor: String) {
+        var credits: Int = 1
+            set(value) {
+                if (value in 1..5) {
+                    field = value
+                } else {
+                    println("Credit has to be in between 1-5")
+                }
+            }
+
+        val courseDuration: Int
+            get() = credits * 15
+    }
 
     // ---------------------- EXERCISE 4
     // Create a class Athlete with properties: id, name
@@ -67,5 +119,13 @@ object Part4InheritanceAndAccessModification {
     // The class should have a public field fitnessLevel which uses the private function to return a result.
     // The setter for fitnessLevel should be private
 
+    class Athlete(val id: String, val name: String) {
+        var fitnessLevel: Int = calculateFitnessLevel()
+            private set
+
+        private fun calculateFitnessLevel(): Int {
+            return (0..100).random()
+        }
+    }
 
 }

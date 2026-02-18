@@ -11,6 +11,48 @@ object Part5InterfacesAndAbstractClasses {
     //   - Documentary class should have an additional property: subject
     // Each subclass should override the playContent() method to print a message specific to its type
 
+    abstract class MediaContent(
+        val title: String,
+        val releaseYear: Int,
+        val genre: String,
+        val rating: Double
+    ) {
+        abstract fun playContent()
+    }
+
+    class Movie(
+        title: String,
+        releaseYear: Int,
+        genre: String,
+        rating: Double,
+        val director: String
+    ) : MediaContent(title, releaseYear, genre, rating) {
+        override fun playContent() {
+            println("Playing $title...")
+        }
+    }
+
+    class Series(
+        title: String,
+        releaseYear: Int,
+        genre: String,
+        rating: Double,
+        val seasons: Int
+    ) : MediaContent(title, releaseYear, genre, rating) {
+
+    }
+
+    class Documentary(
+        title: String,
+        releaseYear: Int,
+        genre: String,
+        rating: Double,
+        val subject: String
+    ) : MediaContent(title, releaseYear, genre, rating) {
+        override fun playContent() {
+            println("Playing $title...")
+        }
+    }
 
     // ---------------------- EXERCISE 2
     // Create an interface called Account with 3 properties: accountNumber, accountHolder, and balance (Double)
@@ -25,5 +67,14 @@ object Part5InterfacesAndAbstractClasses {
     //          the amount is less than or equal to the sum of the balance and overdraftLimit
     //      Should you try to withdraw more money than allowed, it should print: "Insufficient funds"
 
+    interface Account {
+        val accountNumber: String
+        val accountHolder: String
+        val balance: Double
+
+        fun deposit(amount: Double) {
+
+        }
+    }
 
 }
